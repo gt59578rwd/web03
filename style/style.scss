@@ -1,0 +1,548 @@
+/* -----------------css reset--------------------- */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* ---------------------------------------------- */
+
+
+
+
+// 以reset 所以不須解除粗體字
+// h1,h2,h3,h4,h5,h6{
+//     font-weight: normal;
+// }
+
+
+
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    // 鎖定標題列 效果設定值
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+    box-shadow: 0 3px 5px #757474;
+
+    div.logo {
+        display: flex;
+        align-items: center;
+
+        // 伸展比 5 收縮比 1 400寬
+        // 會與同排的flex作佔比 因此nav 的 fles 為2 1 400px 為 同一行為800px 收縮比為1比1 logo的伸展比為5/7(5+2)
+
+        flex: 5 1 400px;
+        // 寫法
+        // flex-grow: 5;
+        // flex-shrink: 1;
+        // flex-basis: 400px;
+        margin-left: 2rem;
+
+
+        img {
+            // VW 為瀏覽器的百分比
+            // 6VW 為瀏覽器的百分之6的大小
+            width: 6vw;
+            height: 6vw;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
+    nav {
+        flex: 2 1 400px;
+        // flex-grow: 2;
+        // flex-shrink: 1;
+        // flex-basis: 400px;
+
+        ul {
+            display: flex;
+
+            // 已reset 所以可以不用寫
+            // list-style-type: none;
+
+            justify-content: space-around;
+
+            li {
+
+                a {
+                    color: #09777d;
+                    text-decoration: none;
+                    font-size: 1.35rem;
+                }
+            }
+        }
+    }
+
+}
+
+
+
+main {
+
+
+    section.backImage {
+        // 最小高度
+        // VH為瀏覽器高度百分比
+        min-height: 90vh;
+        width: 100%;
+        background-image: url(../Pictures/pexels-photo-416676.jpeg);
+        // cover 圖片等比例縮放
+        // contain 會有拼接 也是等比縮放
+        background-size: cover;
+        // 圖片中心點維持在網頁中心點
+        background-position: center;
+
+        // 以現在的位子設定定位點
+        position: relative;
+        // 階層為第0層(數字越小越下層)
+        z-index: 0;
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        div.filter {
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            min-height: 90vh;
+            // 參考父層定位點
+            position: absolute;
+            top: 0;
+            border: 1px solid red;
+            // 階層為第-1層(數字越小越下層)
+            // 設定為-1才不會蓋到section的h3的文字
+            // background-image 永遠在最下層不會被蓋掉
+            //要設定0才可以使用 
+            z-index: -1;
+        }
+
+        h3 {
+            font-size: 3.5rem;
+            color: white;
+            line-height: 4rem;
+            margin: 2rem 0rem;
+        }
+
+        p {
+            font-size: 2rem;
+            color: white;
+            line-height: 2rem;
+            padding: 1.5rem;
+        }
+
+        button.start {
+            background-color: #3bf0e5;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+            border: none;
+            border-radius: 1rem;
+            // 手指符號
+            cursor: pointer;
+        }
+
+    }
+
+    section.about{
+        h3 {
+            font-size: 3.5rem;
+            color: red;
+            line-height: 4rem;
+            margin: 2rem 0rem;
+            padding: 1.5rem;
+        }
+
+        p{
+            font-size: 1.5rem;
+            color:black;
+            line-height: 2rem;
+            padding: 1.5rem;
+        }
+
+}
+
+
+section.second {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+
+    h2 {
+        font-size: 2rem;
+        margin: 2rem 0rem;
+    }
+
+
+    section.cards {
+        display: flex;
+        // border: 2px solid red;
+        width: 80%;
+
+        // height: 80vh;
+
+        // 加上footer後要改為最小高度
+        min-height: 80vh;
+        flex-wrap: wrap;
+
+
+        div.card {
+            // border: 2px solid blue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 1rem;
+            flex: 1 1 300px;
+
+            div.image-container {
+                // 超過的部分隱藏
+                overflow: hidden;
+                width: 15vw;
+                height: 15vw;
+                border-radius: 50%;
+
+                img {
+                    width: 15vw;
+                    height: 15vw;
+                    border-radius: 50%;
+                    // 變換 所有效果 一起 時間0.2S
+                    transition: all 0.2s;
+
+                    &:hover {
+                        // 放大1.2倍
+                        transform: scale(1.2);
+
+                    }
+                }
+
+
+
+            }
+
+
+            h4 {
+                font-size: 2rem;
+                margin: 1rem 0rem;
+            }
+
+            p {
+                font-size: 1.25rem;
+            }
+
+            a {
+                margin: 1rem 0rem;
+                text-decoration: none;
+                padding: 1rem 1.5rem;
+                background-color: #09777d;
+                color: white;
+                font-size: 1.25rem;
+            }
+
+
+        }
+    }
+}
+
+}
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 30vh;
+    justify-content: space-around;
+
+    background-color: rgb(207, 207, 207);
+
+
+    div.logo {
+        display: flex;
+        align-items: center;
+
+
+        img {
+            width: 6vw;
+            height: 6vw;
+
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+    }
+
+    nav {
+        width: 30%;
+
+        ul {
+            display: flex;
+
+            justify-content: space-around;
+            width: 100%;
+
+            flex-wrap: wrap;
+
+            li {
+                flex-basis: 100px;
+                margin: 0.5rem 0;
+
+                a {
+                    color: black;
+                    text-decoration: none;
+                    font-size: 1.35rem;
+
+                    font-weight: bold;
+
+                }
+            }
+        }
+
+    }
+
+    section.links {
+        a {
+            margin: 0 1rem;
+
+            img {
+                width: 5vw;
+                height: 5vw;
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 550px) {
+    header {
+        div.logo {
+            margin-left: 0.5rem;
+
+            img {
+                width: 15vw;
+                height: 15vw;
+            }
+        }
+
+    }
+
+    footer {
+        div.logo {
+
+            img {
+                width: 15vw;
+                height: 15vw;
+            }
+        }
+
+        section.links {
+            margin-top: 1rem;
+
+            a {
+                img {
+                    width: 10vw;
+                    height: 10vw;
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width:700px) {
+    main {
+        section.second {
+            section.cards {
+                div.card {
+                    div.image-container {
+                        width: 40vw;
+                        height: 40vw;
+
+                        img {
+                            width: 40vw;
+                            height: 40vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+// scrollbar css
+/* width */
+// 卷軸寬度
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+//剩餘捲籌顏色
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+// 捲籌顏色
+::-webkit-scrollbar-thumb {
+    background: #09777d;
+}
+
+/* Handle on hover */
+// 滑鼠移動到卷軸時的卷軸顏色
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
